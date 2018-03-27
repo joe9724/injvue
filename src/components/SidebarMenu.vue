@@ -12,56 +12,78 @@
       </li>-->
 
 
-    <li class="header">设备管理</li>
-     <router-link tag="li" class="pageLink" to="/device/list/my">
+    <li class="header">系统管理</li>
+     <router-link tag="li" class="pageLink" to="/inj/domainset">
        <a>
          <i class="fa fa-desktop"></i>
-         <span class="page">我的设备</span>
+         <span class="page">域名配置</span>
        </a>
      </router-link>
-     <router-link tag="li" class="pageLink" to="/device/list">
+     <router-link tag="li" class="pageLink" to="/inj/adminusers">
        <a>
          <i class="fa fa-table"></i>
-         <span class="page">设备管理</span>
+         <span class="page">管理员管理</span>
        </a>
      </router-link>
-     <li class="header">用户管理</li>
-     <router-link tag="li" class="pageLink" to="/user/list">
+     <li class="header">活动管理</li>
+     <router-link tag="li" class="pageLink" to="/inj/activities">
        <a>
          <i class="fa fa-desktop"></i>
-         <span class="page">用户列表</span>
+         <span class="page">活动列表</span>
        </a>
      </router-link>
-      <li class="header">组织管理</li>
+      <li class="header">社区管理</li>
      <router-link tag="li" class="pageLink" to="/agency/list">
        <a>
          <i class="fa fa-table"></i>
-         <span class="page">组织机构</span>
+         <span class="page">社区列表</span>
        </a>
      </router-link>
-     <li class="header">系统管理</li>
+      <li class="header">商户管理</li>
+      <router-link tag="li" class="pageLink" to="/agency/list">
+        <a>
+          <i class="fa fa-table"></i>
+          <span class="page">商户列表</span>
+        </a>
+      </router-link>
+      <router-link tag="li" class="pageLink" to="/agency/list">
+        <a>
+          <i class="fa fa-table"></i>
+          <span class="page">商品列表</span>
+        </a>
+      </router-link>
+      <router-link tag="li" class="pageLink" to="/agency/list">
+        <a>
+          <i class="fa fa-table"></i>
+          <span class="page">订单列表</span>
+        </a>
+      </router-link>
+      <li class="header">数据统计</li>
+      <router-link tag="li" class="pageLink" to="/log/list/op">
+        <a>
+          <i class="fa fa-table"></i>
+          <span class="page">流水</span>
+        </a>
+      </router-link>
+      <router-link tag="li" class="pageLink" to="/log/list/op">
+        <a>
+          <i class="fa fa-table"></i>
+          <span class="page">用户</span>
+        </a>
+      </router-link>
+      <router-link tag="li" class="pageLink" to="/log/list/op">
+        <a>
+          <i class="fa fa-table"></i>
+          <span class="page">广告</span>
+        </a>
+      </router-link>
+     <li class="header">日志管理</li>
      <router-link tag="li" class="pageLink" to="/log/list/op">
        <a>
          <i class="fa fa-table"></i>
          <span class="page">操作日志</span>
        </a>
      </router-link>
-     <router-link tag="li" class="pageLink" to="/log/list/msg">
-       <a>
-         <i class="fa fa-table"></i>
-         <span class="page">消息日志</span>
-       </a>
-     </router-link>
-      <router-link tag="li" class="pageLink" to="/device/list/test">
-        <a>
-          <i class="fa fa-table"></i>
-          <span class="page">我的测试设备列表</span>
-        </a>
-      </router-link>
-
-
-     <div> ---- </div>
-
 
       <!--<router-link tag="li" class="pageLink" to="/curve/realtime">
         <a>

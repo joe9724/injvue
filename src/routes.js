@@ -36,6 +36,10 @@ import CurveView from './components/views/WbCurve.vue'
 import WbMsgDetail from './components/views/WbMsgDetail.vue'
 import WbMyDeviceTestList from './components/views/WbMyDeviceListTest.vue'
 import WbSendRequest from './components/views/WbSendRequest.vue'
+import InjDomainSet from './components/views/InjDomainSet.vue'
+import InjAdminUsers from './components/views/InjAdminUsers.vue'
+import InjActivities from './components/views/InjActivities.vue'
+
 // Routes
 const routes = [
   {
@@ -46,6 +50,27 @@ const routes = [
     path: '/',
     component: DashView,
     children: [
+      {
+        path: 'inj/activities',
+        alias: 'InjActivities',
+        component: InjActivities,
+        name: '管理员管理',
+        meta: {description: 'InjActivities'}
+      },
+      {
+        path: 'inj/adminusers',
+        alias: 'InjAdminUsers',
+        component: InjAdminUsers,
+        name: '管理员管理',
+        meta: {description: 'InjAdminUsers'}
+      },
+      {
+        path: 'inj/domainset',
+        alias: 'InjDomainSet',
+        component: InjDomainSet,
+        name: '域名设置',
+        meta: {description: 'InjDomainSet'}
+      },
       {
         path: 'request/send',
         alias: 'WbSendRequest',

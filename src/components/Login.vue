@@ -25,7 +25,7 @@
           </div>
         </div>
       </div>-->
-    <div class="user-login" style="background: #ffffff">
+    <div class="user-login" style="background: #f8f8f8">
       <div class="row bs-reset">
         <div class="col-md-6 bs-reset">
           <div class="login-bg" style="background: none; position: relative; z-index: 0;">
@@ -35,7 +35,7 @@
         <div class="col-md-6 login-container bs-reset">
           <div class="login-content">
 
-            <h1> 综合数据管理系统 登录</h1>
+            <h1> 爱南京-管理系统 登录</h1>
             <p> 登录账号即为工号，公共场合注意密码保护，及时登出. </p>
 
             <!-- MESSAGES -->
@@ -102,7 +102,7 @@ export default {
     checkCreds: function () {
       // const {username, password} = this
 //      console.log(username)
-      // this.$router.push('myDevice')
+      this.$router.push('/inj/domainset')
       this.toggleLoading()
       this.resetResponse()
       this.$store.commit('TOGGLE_LOADING')
