@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-md-12">
           <div id="example1_length" class="dataTables_length">
-            <router-link class="pageLink" to="/device/add">
+            <router-link class="pageLink" to="/inj/activity/add">
               <a>
                 <span class="page" style="float:right;margin:5px"><el-button type="success" plain>添加</el-button></span>
 
@@ -111,6 +111,8 @@
     methods: {
       handleEdit (index, row) {
         console.log(index, row)
+        var activityId = '123'
+        this.$router.push({path: '/inj/activity/edit?activityId=' + activityId})
       },
       handleDelete (index, row) {
         console.log(index, row)

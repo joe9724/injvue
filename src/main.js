@@ -119,6 +119,9 @@ Vue.use(DataTables)
 import JsonEditor from 'vue-json-edit'
 Vue.use(JsonEditor)
 
+import uploader from 'vue-simple-uploader'
+Vue.use(uploader)
+
 import lang from 'element-ui/lib/locale/lang/en'
 import locale from 'element-ui/lib/locale'
 

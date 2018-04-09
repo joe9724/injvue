@@ -39,6 +39,8 @@ import WbSendRequest from './components/views/WbSendRequest.vue'
 import InjDomainSet from './components/views/InjDomainSet.vue'
 import InjAdminUsers from './components/views/InjAdminUsers.vue'
 import InjActivities from './components/views/InjActivities.vue'
+import InjAddActivity from './components/views/InjAddActivity.vue'
+import InjEditActivity from './components/views/InjEditActivity.vue'
 
 // Routes
 const routes = [
@@ -50,6 +52,20 @@ const routes = [
     path: '/',
     component: DashView,
     children: [
+      {
+        path: 'inj/activity/edit',
+        alias: 'editactivity',
+        component: InjEditActivity,
+        name: '编辑活动',
+        meta: {description: 'InjEditActivity'}
+      },
+      {
+        path: 'inj/activity/add',
+        alias: 'addactivity',
+        component: InjAddActivity,
+        name: '发布活动',
+        meta: {description: 'InjAddActivity'}
+      },
       {
         path: 'inj/activities',
         alias: 'InjActivities',
