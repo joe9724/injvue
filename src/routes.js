@@ -41,6 +41,7 @@ import InjAdminUsers from './components/views/InjAdminUsers.vue'
 import InjActivities from './components/views/InjActivities.vue'
 import InjAddActivity from './components/views/InjAddActivity.vue'
 import InjEditActivity from './components/views/InjEditActivity.vue'
+import InjPosts from './components/views/InjZonePosts.vue'
 
 // Routes
 const routes = [
@@ -52,6 +53,13 @@ const routes = [
     path: '/',
     component: DashView,
     children: [
+      {
+        path: 'inj/post/list',
+        alias: 'InjPosts',
+        component: InjPosts,
+        name: '帖子列表',
+        meta: {description: 'InjPosts'}
+      },
       {
         path: 'inj/activity/edit',
         alias: 'editactivity',

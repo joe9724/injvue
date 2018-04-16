@@ -33,12 +33,24 @@
        </a>
      </router-link>
       <li class="header">社区管理</li>
+      <router-link tag="li" class="pageLink" to="/agency/list">
+        <a>
+          <i class="fa fa-table"></i>
+          <span class="page">圈子列表</span>
+        </a>
+      </router-link>
      <router-link tag="li" class="pageLink" to="/agency/list">
        <a>
          <i class="fa fa-table"></i>
-         <span class="page">社区列表</span>
+         <span class="page">帖子列表</span>
        </a>
      </router-link>
+      <router-link tag="li" class="pageLink" to="/agency/list">
+        <a>
+          <i class="fa fa-table"></i>
+          <span class="page">话题列表</span>
+        </a>
+      </router-link>
       <li class="header">商户管理</li>
       <router-link tag="li" class="pageLink" to="/agency/list">
         <a>
