@@ -12,7 +12,6 @@
               </a>
             </router-link>
           </div>
-          <!--<el-button type="primary" @click="onSubmit">确定</el-button>-->
           <div style="margin-top: 15px;">
             <el-input placeholder="请输入内容" v-model="input5" class="input-with-select">
               <el-select v-model="select" slot="prepend" placeholder="请选择">
@@ -23,18 +22,19 @@
               <el-button slot="append" icon="el-icon-search"></el-button>
             </el-input>
           </div>
+          <!--<el-button type="primary" @click="onSubmit">确定</el-button>-->
           <el-table
             :stripe = true
-            :data="tableData"
+            :data="arrayData"
             style="width: 100%">
             <el-table-column
-            label="活动名称"
-            width="300">
-            <template slot-scope="scope">
-              <!--<i class="el-icon-time"></i>-->
-              <span style="margin-left: 10px">{{ scope.row.name }}</span>
-            </template>
-          </el-table-column>
+              label="圈名"
+              width="300">
+              <template slot-scope="scope">
+                <!--<i class="el-icon-time"></i>-->
+                <span style="margin-left: 10px">{{ scope.row.name }}</span>
+              </template>
+            </el-table-column>
             <el-table-column
               label="状态"
               width="100">
@@ -47,7 +47,7 @@
               <template slot-scope="scope">
                 <el-button
                   size="mini"
-                  @click="handleEdit(scope.$index, scope.row)">查看</el-button>
+                  @click="showMembers(scope.$index, scope.row)">圈内用户</el-button>
                 <el-button
                   size="mini"
                   @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
@@ -59,14 +59,11 @@
                   @click="handleEdit(scope.$index, scope.row)">下移</el-button>
                 <el-button
                   size="mini"
-                  @click="handleEdit(scope.$index, scope.row)">收藏用户</el-button>
-                <el-button
-                  size="mini"
-                  @click="handleEdit(scope.$index, scope.row)">参加用户</el-button>
+                  @click="handleEdit(scope.$index, scope.row)">导出用户</el-button>
                 <el-button
                   size="mini"
                   type="danger"
-                  @click="handleDelete(scope.$index, scope.row)">下架</el-button>
+                  @click="handleDelete(scope.$index, scope.row)">关闭</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -81,6 +78,9 @@
   export default {
     data () {
       return {
+        arrayData: [],
+        totalCount: '',
+        input5: '',
         tableData: [{
           role: 'root',
           name: '周末去哪儿',
@@ -125,6 +125,11 @@
       }
     },
     methods: {
+      showMembers (index, row) {
+        // console.log(index, row)
+        var zoneId = '1'
+        this.$router.push({path: '/inj/zone/members?zoneId=' + zoneId})
+      },
       handleEdit (index, row) {
         console.log(index, row)
         var activityId = '123'
@@ -160,6 +165,16 @@
       }
     },
     created () {
+      api.request('get', 'zone/list?userid=1&page=0&count=20')
+        .then(response => {
+          this.arrayData = response.data.body.data.zones
+          this.totalCount = response.data.body.data.total_count
+        })
+        .catch(error => {
+          // this.$store.commit('TOGGLE_LOADING')
+          console.log(error)
+          this.response = 'Server appears to be offline'
+        })
     }
   }
 </script>
@@ -176,5 +191,11 @@
 
   .el-icon-arrow-down {
     font-size: 12px;
+  }
+  .el-select .el-input {
+    width: 130px;
+  }
+  .input-with-select .el-input-group__prepend {
+    background-color: #fff;
   }
 </style>

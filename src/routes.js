@@ -41,7 +41,13 @@ import InjAdminUsers from './components/views/InjAdminUsers.vue'
 import InjActivities from './components/views/InjActivities.vue'
 import InjAddActivity from './components/views/InjAddActivity.vue'
 import InjEditActivity from './components/views/InjEditActivity.vue'
-import InjPosts from './components/views/InjZonePosts.vue'
+import InjZonePosts from './components/views/InjZonePosts.vue'
+import InjPosts from './components/views/InjZones.vue'
+import InjTopics from './components/views/InjTopics.vue'
+import InjComments from './components/views/InjComments.vue'
+import InjUsers from './components/views/InjUsers.vue'
+import InjTags from './components/views/InjTags.vue'
+import InjMembersOfZone from './components/views/InjMembersOfZone.vue'
 
 // Routes
 const routes = [
@@ -54,11 +60,53 @@ const routes = [
     component: DashView,
     children: [
       {
-        path: 'inj/post/list',
+        path: 'inj/zone/members',
+        alias: 'InjMembersOfZone',
+        component: InjMembersOfZone,
+        name: 'member列表',
+        meta: {description: 'InjMembersOfZone'}
+      },
+      {
+        path: 'inj/tag/list',
+        alias: 'InjTags',
+        component: InjTags,
+        name: 'tag列表',
+        meta: {description: 'InjTags'}
+      },
+      {
+        path: 'inj/user/list',
+        alias: 'InjUsers',
+        component: InjUsers,
+        name: '用户列表',
+        meta: {description: 'InjUsers'}
+      },
+      {
+        path: 'inj/comment/list',
+        alias: 'InjComments',
+        component: InjComments,
+        name: '评论列表',
+        meta: {description: 'InjComments'}
+      },
+      {
+        path: 'inj/topic/list',
+        alias: 'InjTopics',
+        component: InjTopics,
+        name: '话题列表',
+        meta: {description: 'InjTopics'}
+      },
+      {
+        path: 'inj/zone/list',
         alias: 'InjPosts',
         component: InjPosts,
-        name: '帖子列表',
+        name: '论坛列表',
         meta: {description: 'InjPosts'}
+      },
+      {
+        path: 'inj/post/list',
+        alias: 'InjZonePosts',
+        component: InjZonePosts,
+        name: '帖子列表',
+        meta: {description: 'InjZonePosts'}
       },
       {
         path: 'inj/activity/edit',

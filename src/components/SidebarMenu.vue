@@ -33,22 +33,40 @@
        </a>
      </router-link>
       <li class="header">社区管理</li>
-      <router-link tag="li" class="pageLink" to="/agency/list">
+      <router-link tag="li" class="pageLink" to="/inj/user/list">
+        <a>
+          <i class="fa fa-table"></i>
+          <span class="page">用户列表</span>
+        </a>
+      </router-link>
+      <router-link tag="li" class="pageLink" to="/inj/zone/list">
         <a>
           <i class="fa fa-table"></i>
           <span class="page">圈子列表</span>
         </a>
       </router-link>
-     <router-link tag="li" class="pageLink" to="/agency/list">
+     <router-link tag="li" class="pageLink" to="/inj/post/list">
        <a>
          <i class="fa fa-table"></i>
          <span class="page">帖子列表</span>
        </a>
      </router-link>
-      <router-link tag="li" class="pageLink" to="/agency/list">
+      <router-link tag="li" class="pageLink" to="/inj/topic/list">
         <a>
           <i class="fa fa-table"></i>
           <span class="page">话题列表</span>
+        </a>
+      </router-link>
+      <router-link tag="li" class="pageLink" to="/inj/comment/list">
+        <a>
+          <i class="fa fa-table"></i>
+          <span class="page">评论列表</span>
+        </a>
+      </router-link>
+      <router-link tag="li" class="pageLink" to="/inj/tag/list">
+        <a>
+          <i class="fa fa-table"></i>
+          <span class="page">标签列表</span>
         </a>
       </router-link>
       <li class="header">商户管理</li>
