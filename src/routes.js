@@ -42,12 +42,14 @@ import InjActivities from './components/views/InjActivities.vue'
 import InjAddActivity from './components/views/InjAddActivity.vue'
 import InjEditActivity from './components/views/InjEditActivity.vue'
 import InjZonePosts from './components/views/InjZonePosts.vue'
-import InjPosts from './components/views/InjZones.vue'
+import InjZones from './components/views/InjZones.vue'
 import InjTopics from './components/views/InjTopics.vue'
 import InjComments from './components/views/InjComments.vue'
 import InjUsers from './components/views/InjUsers.vue'
 import InjTags from './components/views/InjTags.vue'
 import InjMembersOfZone from './components/views/InjMembersOfZone.vue'
+import InjAddZone from './components/views/InjAddZone.vue'
+import InjEditZone from './components/views/InjEditZone.vue'
 
 // Routes
 const routes = [
@@ -59,6 +61,20 @@ const routes = [
     path: '/',
     component: DashView,
     children: [
+      {
+        path: 'inj/zone/edit',
+        alias: 'InjEditZone',
+        component: InjEditZone,
+        name: '编辑圈子',
+        meta: {description: 'InjEditZone'}
+      },
+      {
+        path: 'inj/zone/add',
+        alias: 'InjAddZone',
+        component: InjAddZone,
+        name: '添加圈子',
+        meta: {description: 'InjAddZone'}
+      },
       {
         path: 'inj/zone/members',
         alias: 'InjMembersOfZone',
@@ -97,7 +113,7 @@ const routes = [
       {
         path: 'inj/zone/list',
         alias: 'InjPosts',
-        component: InjPosts,
+        component: InjZones,
         name: '论坛列表',
         meta: {description: 'InjPosts'}
       },

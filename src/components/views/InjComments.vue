@@ -5,34 +5,29 @@
       <div class="row">
         <div class="col-md-12">
           <div id="example1_length" class="dataTables_length">
-            <router-link class="pageLink" to="/inj/activity/add">
+            <router-link class="pageLink" to="/inj/zone/add">
               <a>
-                <span class="page" style="float:right;margin:5px"><el-button type="success" plain>添加</el-button></span>
+                <span class="page" style="float:right;margin:5px"><el-button type="success" plain></el-button></span>
 
               </a>
             </router-link>
           </div>
           <div style="margin-top: 15px;">
             <el-input placeholder="请输入内容" v-model="input5" class="input-with-select">
-              <el-select v-model="select" slot="prepend" placeholder="请选择">
-                <el-option label="餐厅名" value="1"></el-option>
-                <el-option label="订单号" value="2"></el-option>
-                <el-option label="用户电话" value="3"></el-option>
-              </el-select>
               <el-button slot="append" icon="el-icon-search"></el-button>
             </el-input>
           </div>
           <!--<el-button type="primary" @click="onSubmit">确定</el-button>-->
           <el-table
             :stripe = true
-            :data="tableData"
+            :data="arrayData"
             style="width: 100%">
             <el-table-column
-              label="活动名称"
+              label="内容"
               width="300">
               <template slot-scope="scope">
                 <!--<i class="el-icon-time"></i>-->
-                <span style="margin-left: 10px">{{ scope.row.name }}</span>
+                <span style="margin-left: 10px">{{ scope.row.content }}</span>
               </template>
             </el-table-column>
             <el-table-column
@@ -47,20 +42,8 @@
               <template slot-scope="scope">
                 <el-button
                   size="mini"
-                  @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-                <el-button
-                  size="mini"
-                  @click="handleEdit(scope.$index, scope.row)">上移</el-button>
-                <el-button
-                  size="mini"
-                  @click="handleEdit(scope.$index, scope.row)">下移</el-button>
-                <el-button
-                  size="mini"
-                  @click="handleEdit(scope.$index, scope.row)">导出用户</el-button>
-                <el-button
-                  size="mini"
                   type="danger"
-                  @click="handleDelete(scope.$index, scope.row)">下架</el-button>
+                  @click="handleDelete(scope.$index, scope.row)">关闭</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -75,51 +58,21 @@
   export default {
     data () {
       return {
-        input5: '',
-        tableData: [{
-          role: 'root',
-          name: '周末去哪儿',
-          des: '模块说明',
-          lasttime: '2018-03-27 12:00:00',
-          lastip: '218.94.215.3',
-          phone: '18963636363',
-          status: '正常'
-        }, {
-          role: 'admin',
-          name: '88积分即可获得康贝佳口腔医院VIP卡',
-          des: '模块说明',
-          lasttime: '2018-03-27 12:00:00',
-          lastip: '218.94.215.3',
-          phone: '18963636363',
-          status: '过期'
-        }, {
-          role: 'admin',
-          name: '连续签到赢700积分',
-          des: '模块说明',
-          lasttime: '2018-03-27 12:00:00',
-          lastip: '218.94.215.3',
-          phone: '18963636363',
-          status: '正常'
-        }, {
-          role: 'admin',
-          name: '用相机记录下你家宝贝的成长点滴',
-          des: '模块说明',
-          lasttime: '2018-03-27 12:00:00',
-          lastip: '218.94.215.3',
-          phone: '18963636363',
-          status: '正常'
-        }, {
-          role: 'guest',
-          name: '9折入商城鲜果时蔬',
-          des: '模块说明',
-          lasttime: '2018-03-27 12:00:00',
-          lastip: '218.94.215.3',
-          phone: '18963636363',
-          status: '下架'
-        }]
+        arrayData: [],
+        totalCount: '',
+        input5: ''
       }
     },
     methods: {
+      showMembers (index, row) {
+        // console.log(index, row)
+        var zoneId = '1'
+        this.$router.push({path: '/inj/zone/members?zoneId=' + zoneId})
+      },
+      editZone (index, row) {
+        var id = '1'
+        this.$router.push({path: '/inj/zone/edit?id=' + id})
+      },
       handleEdit (index, row) {
         console.log(index, row)
         var activityId = '123'
@@ -155,6 +108,16 @@
       }
     },
     created () {
+      api.request('get', 'comments/list?userid=1&page=0&count=20&type=1&source_id=1&source_type=1')
+        .then(response => {
+          this.arrayData = response.data.body.data.comments
+          this.totalCount = response.data.body.data.total_count
+        })
+        .catch(error => {
+          // this.$store.commit('TOGGLE_LOADING')
+          console.log(error)
+          this.response = 'Server appears to be offline'
+        })
     }
   }
 </script>

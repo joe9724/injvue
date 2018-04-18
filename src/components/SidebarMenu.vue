@@ -66,7 +66,7 @@
       <router-link tag="li" class="pageLink" to="/inj/tag/list">
         <a>
           <i class="fa fa-table"></i>
-          <span class="page">标签列表</span>
+          <span class="page">标签列表[2期]</span>
         </a>
       </router-link>
       <li class="header">商户管理</li>
