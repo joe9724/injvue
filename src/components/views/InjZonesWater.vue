@@ -5,65 +5,72 @@
       <div class="row">
         <div class="col-md-12">
           <div style="margin-top: 15px;">
-            <el-input placeholder="请输入内容" v-model="input5" class="input-with-select">
-              <el-select v-model="select" slot="prepend" placeholder="请选择">
-                <el-option label="餐厅名" value="1"></el-option>
-                <el-option label="订单号" value="2"></el-option>
-                <el-option label="用户电话" value="3"></el-option>
-              </el-select>
+            <el-input placeholder="请输入圈名关键字" v-model="input5" class="input-with-select">
               <el-button slot="append" icon="el-icon-search"></el-button>
             </el-input>
           </div>
-          <!--<el-button type="primary" @click="onSubmit">确定</el-button>-->
-          <el-table
-            :stripe = true
-            :data="arrayData"
-            style="width: 100%">
-            <el-table-column
-              label="会员名"
-              width="300">
-              <template slot-scope="scope">
-                <!--<i class="el-icon-time"></i>-->
-                <span style="margin-left: 10px">{{ scope.row.nickname }}</span>
-              </template>
-            </el-table-column>
-            <el-table-column label="操作">
-              <template slot-scope="scope">
-                <el-button
-                  size="mini"
-                  @click="handleEdit(scope.$index, scope.row)">导出用户</el-button>
-                <el-button
-                  size="mini"
-                  type="danger"
-                  @click="handleDelete(scope.$index, scope.row)">禁止</el-button>
-              </template>
-            </el-table-column>
-          </el-table>
-        </div>
-        <div>
-          <div class="block">
-            <!--<span class="demonstration">每页显示条数</span>-->
-            <el-pagination
-              @size-change="handleSizeChange"
-              @current-change="handleCurrentChange"
-              :current-page.sync="currentPage"
-              :page-sizes="[10, 20, 30, 40]"
-              :page-size="10"
-              layout=" prev, pager, next"
-              :total="totalCount">
-            </el-pagination>
+          <waterfall :line-gap="250" :watch="arrayData" style="margin-top: 10px">
+            <!-- each component is wrapped by a waterfall slot -->
+            <waterfall-slot
+              v-for="(item, index) in arrayData"
+              width="230"
+              height="320"
+              :order="index"
+              :key="item.euid"
+            >
+              <el-card :body-style="{ padding: '10px' }">
+                <img v-bind:src="item.logo" class="rimage" style="text-align: center" >
+                <div style="padding: 14px;">
+                  <div style="color: rgba(0,172,214,0.93);font-size: 16px">{{item.name}}</div>
+                  <div>创建时间:{{item.registerat}}</div>
+                  <div>动态数:{{item.level}}</div>
+                  <div>话题数:{{item.level}}</div>
+                  <div>评论数:{{item.level}}</div>
+                  <div>浏览数:{{item.hitTimes}}</div>
+                  <div class="bottom clearfix">
+                    <time class="time">{{ currentDate }}</time>
+                    <el-button type="text" class="button">统计</el-button>
+                  </div>
+                </div>
+              </el-card>
+              <!--
+                your component
+              -->
+            </waterfall-slot>
+          </waterfall>
+          <div>
+            <div class="block">
+              <!--<span class="demonstration">每页显示条数</span>-->
+              <el-pagination
+                @size-change="handleSizeChange"
+                @current-change="handleCurrentChange"
+                :current-page.sync="currentPage"
+                :page-sizes="[10, 20, 30, 40]"
+                :page-size="10"
+                layout=" prev, pager, next"
+                :total="totalCount">
+              </el-pagination>
+            </div>
           </div>
         </div>
+
       </div>
     </section>
   </div>
 </template>
 <script>
   import api from '../../api'
+  import Waterfall from 'vue-waterfall/lib/waterfall'
+  import WaterfallSlot from 'vue-waterfall/lib/waterfall-slot'
 
   export default {
+    components: {
+      Waterfall,
+      WaterfallSlot
+    },
     data () {
       return {
+        value5: 3.7,
         arrayData: [],
         input5: '',
         currentPage: 1,
@@ -145,9 +152,9 @@
       }
     },
     created () {
-      api.request('get', 'zone/members?userid=1&page=0&count=20&zone_id=1')
+      api.request('get', 'zone/list?userid=1&page=0&count=20')
         .then(response => {
-          this.arrayData = response.data.body.data.members
+          this.arrayData = response.data.body.data.zones
           this.totalCount = response.data.body.data.total_count
         })
         .catch(error => {
@@ -177,5 +184,39 @@
   }
   .input-with-select .el-input-group__prepend {
     background-color: #fff;
+  }
+  .time {
+    font-size: 13px;
+    color: #999;
+  }
+
+  .bottom {
+    margin-top: 13px;
+    line-height: 12px;
+  }
+
+  .button {
+    padding: 0;
+    float: right;
+  }
+
+  .image {
+    width: 100%;
+    display: block;
+  }
+
+  .clearfix:before,
+  .clearfix:after {
+    display: table;
+    content: "";
+  }
+
+  .clearfix:after {
+    clear: both
+  }
+  .rimage{
+    width:75px;
+    height:75px;
+    border-radius:50%;
   }
 </style>
